@@ -1,0 +1,28 @@
+{
+  "name": "tp_compiler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/jpsandovaln/TP_COMPILER.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpsandovaln/TP_COMPILER/issues"
+  },
+  "homepage": "https://github.com/jpsandovaln/TP_COMPILER#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
