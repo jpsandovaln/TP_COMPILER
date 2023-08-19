@@ -1,10 +1,11 @@
 const express = require('express');
-const upload = require('../middlewares/multer_middleware');
+const FileMiddleware = require('../middlewares/file_middleware');
 const router = express.Router();
 const CompilerController = require('../controllers/compiler_controller');
 
 const compiler = new CompilerController();
+const fileMiddleware = new FileMiddleware();
 
-router.get('/', upload(), compiler.get);
+router.post('/', fileMiddleware.upload(), compiler.post);
 
 module.exports = router;

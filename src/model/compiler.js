@@ -1,28 +1,25 @@
-const { exec } = require('child_process');
-const path = require('path');
-
+const JavaCommand = require('./JavaCommand');
+const PythonCommand = require('./PythonCommand');
+const Command = require('./command');
+const Execute = require('./execute');
 
 class Compiler {
   constructor() {
     console.info('new instance');
   }
 
-  run(filePath) {
-    const classDir = path.dirname(filePath);
-    const fileName = path.parse(filePath).name;
-    console.info(classDir);
-    console.info(fileName);
-    console.info(filePath);
-    const command = '"C:\\Program Files\\Java\\jdk1.7.0_80\\bin\\javac" ' + filePath + ' && "C:\\Program Files\\Java\\jdk1.7.0_80\\bin\\java" -cp ' + classDir + ' ' + fileName;
-    console.info(command);
-    return new Promise((resolve, reject) => {
-      exec(command, (err, stdout, stderr) => {
-        if (err) {
-            reject(err);
-        }
-        resolve(stdout);
-      });
-    })
+  async run(inputFile, lang) {
+    let command;
+    if (lang === 'java') {
+      command = new JavaCommand();
+    }
+    if (lang === 'python') {
+      command = new PythonCommand();
+    }
+    const cmdResullt = command.build(inputFile);
+    const execute = new Execute();
+    const result = await execute.run(cmdResullt);
+    return result;
   }
 }
 
