@@ -1,10 +1,12 @@
 const Compiler = require('../model/compiler');
 
 class CompilerController {
-  async get(req, res) {
-    const imputFile = req.file.path;
+
+  async post(req, res) {
+    const inputFile = req.file.path;
+    const lang = req.body.lang;
     const comp = new Compiler();
-    const result = await comp.run(imputFile);
+    const result = await comp.run(inputFile, lang);
     res.send(result);
   }
 }
