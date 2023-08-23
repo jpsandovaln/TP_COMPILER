@@ -1,4 +1,4 @@
-const Compiler = require('../model/compiler');
+const Compiler = require('../services/compiler');
 
 class CompilerController {
 
