@@ -8,7 +8,7 @@ class Compiler {
     console.info('new instance');
   }
 
-  async run(inputFile, lang) {
+  async run(inputFile, lang, version) {
     let command;
     if (lang === 'java') {
       command = new JavaCommand();
@@ -16,7 +16,7 @@ class Compiler {
     if (lang === 'python') {
       command = new PythonCommand();
     }
-    const cmdResullt = command.build(inputFile);
+    const cmdResullt = command.build(inputFile, version);
     const execute = new Execute();
     const result = await execute.run(cmdResullt);
     return result;

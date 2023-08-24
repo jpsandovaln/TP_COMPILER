@@ -5,7 +5,7 @@ class Command {
     }
   }
 
-  build(filePath) {
+  build(filePath, version) {
     throw new Error('Method build must be implemented');
   }
 }
