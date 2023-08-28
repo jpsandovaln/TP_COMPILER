@@ -1,7 +1,5 @@
-const JavaCommand = require('./JavaCommand');
-const PythonCommand = require('./PythonCommand');
-const Command = require('./command');
 const Execute = require('./execute');
+const FactoryCommand = require('./factory_command');
 
 class Compiler {
   constructor() {
@@ -9,13 +7,8 @@ class Compiler {
   }
 
   async run(inputFile, lang, version) {
-    let command;
-    if (lang === 'java') {
-      command = new JavaCommand();
-    }
-    if (lang === 'python') {
-      command = new PythonCommand();
-    }
+    const factoryCommand = new FactoryCommand();
+    const command = factoryCommand.getInstance(lang);
     const cmdResullt = command.build(inputFile, version);
     const execute = new Execute();
     const result = await execute.run(cmdResullt);
