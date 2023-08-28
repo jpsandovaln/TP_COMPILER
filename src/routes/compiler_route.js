@@ -3,9 +3,16 @@ const FileMiddleware = require('../middlewares/file_middleware');
 const router = express.Router();
 const CompilerController = require('../controllers/compiler_controller');
 
-const compiler = new CompilerController();
-const fileMiddleware = new FileMiddleware();
+class Router {
+  constructor() {
+    this.compiler = new CompilerController();
+    this.fileMiddleware = new FileMiddleware();
+  }
 
-router.post('/', fileMiddleware.upload(), compiler.post);
+  initRouter() {
+    router.post('/', this.fileMiddleware.upload(), this.compiler.post);
+    return router;
+  }
+}
 
-module.exports = router;
+module.exports = Router
