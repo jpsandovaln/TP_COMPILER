@@ -5,10 +5,10 @@ class FactoryCommand {
   constructor() {
     this.commandMap = new Map();
     this.commandMap.set('java', new JavaCommand());
-    this.commandMap.set('python', new PythonCommand()); 
+    this.commandMap.set('python', new PythonCommand());
   }
  
-  getInstance(lan) {
+  getInstance(lang) {
     return  this.commandMap.get(lang);
   }
 }
