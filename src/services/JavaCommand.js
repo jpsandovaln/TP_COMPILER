@@ -6,13 +6,16 @@ class JavaCommand extends Command {
   constructor() {
     super();
     this.javaVersionPath = new Map();
-    this.javaVersionPath.set('1.7', 'C:\\Program Files\\Java\\jdk1.7.0_80\\bin\\');
-    this.javaVersionPath.set('1.8', 'C:\\Program Files\\Java\\jdk1.8.0_251\\bin\\');
+    this.javaVersionPath.set('1.7', process.env.JAVA7);
+    this.javaVersionPath.set('1.8', process.env.JAVA8);
   }
 
   build(filePath, version) {
     if (filePath === undefined) {
       throw new CommandException("invalid file path", "404", "TP-1001");
+    }
+    if (!version) {
+      throw new CommandException("invalid java version", "404", "TP-1002");
     }
     try {
       const classDir = path.dirname(filePath);
