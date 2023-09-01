@@ -5,7 +5,7 @@ class FileMiddleware {
   upload() {
     const storage = multer.diskStorage({
       destination: (req, file, cb) => {
-        const pathFile = __dirname + '/../../files/uploads/';
+        const pathFile = __dirname + process.env.FILE_UPLOAD;
         fs.mkdirSync(pathFile, { recursive: true });
         cb(null, pathFile);
       },
