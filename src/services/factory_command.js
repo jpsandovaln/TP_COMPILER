@@ -2,6 +2,8 @@ const JavaCommand = require("./JavaCommand");
 const PythonCommand = require("./PythonCommand");
 const CShardCommandAdapter = require('./CShardCommandAdapter');
 const NodeCommand = require("./NodeCommand");
+const JavaCommandProxy = require("./JavaCommandProxy");
+
 
 class FactoryCommand {
   constructor() {
@@ -10,6 +12,7 @@ class FactoryCommand {
     this.commandMap.set('python', new PythonCommand());
     this.commandMap.set('cshard', new CShardCommandAdapter());
     this.commandMap.set('nodejs', new NodeCommand());
+    this.commandMap.set('javaProxy', new JavaCommandProxy());
   }
  
   getInstance(lang) {
