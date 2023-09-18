@@ -8,7 +8,8 @@ class NodeCommand extends Command {
         this.nodeVersionPath.set('14', process.env.JAVA8);
       }
     
-      build(filePath, version) {
+      build(parameter) {
+        parameter.validate();
         return 'dir';
       }
 }

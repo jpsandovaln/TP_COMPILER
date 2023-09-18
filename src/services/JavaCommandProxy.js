@@ -9,12 +9,11 @@ class JavaCommandProxy extends Command {
         this.hour = date.getHours();
     }
 
-    build(filePath, version) {
-        console.info(this.hour);
+    build(parameter) {
+        parameter.validate();
         if (this.hour > 22) {
            const javaCommand = new JavaCommand();
-           const rsult = javaCommand.build(filePath, version);
-           /// add to add DB
+           const rsult = javaCommand.build(parameter.getFilePath, parameter.getVersion);
            return rsult;
         } else {
             throw new CommandException("access denied", "404", "TP-10078");

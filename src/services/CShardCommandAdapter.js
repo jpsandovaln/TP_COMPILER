@@ -7,9 +7,10 @@ class CShardCommandAdapter extends Command {
         this.cshardVersionPath = new Map();
         this.cshardVersionPath.set('1', process.env.PYTHON39);
       }
-      build(filePath, version) {
-        const cshard = new CShard(filePath);
-        cshard.version = version;
+      build(parameter) {
+        parameter.validate();
+        const cshard = new CShard(parameter.getFilePath);
+        cshard.version = parameter.getVersion;
         return cshard.createShardCommand();
       }
 }
